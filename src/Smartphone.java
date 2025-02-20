@@ -1,20 +1,20 @@
 import java.math.BigDecimal;
 
 public class Smartphone extends Prodotto {
-    private int codiceIME;
+    private String codiceIME;
     private int qMemoria;
 
-    public Smartphone(int codiceIME, int qMemoria, int codice, String nome, String marca, BigDecimal prezzo, double iva){
+    public Smartphone( String nome, String marca, BigDecimal prezzo, BigDecimal iva, String codiceIME, int qMemoria){
+        super(nome, marca, prezzo, iva);
         this.codiceIME = codiceIME;
         this.qMemoria = qMemoria;
-        super(codice, nome, marca, prezzo, iva);
     }
 
-    public int getCodiceIME(){
+    public String getCodiceIME(){
         return this.codiceIME;
     }
 
-    public void setCodiceIME(int codiceIME){
+    public void setCodiceIME(String codiceIME){
         this.codiceIME = codiceIME;
     }
 
@@ -25,4 +25,10 @@ public class Smartphone extends Prodotto {
     public void setQMemoria(int qMemoria){
         this.qMemoria = qMemoria;
     }
+    
+    @Override
+    public String toString() {
+        return super.toString() + "\nCodice IMEI: " + getCodiceIME() + "\nGiga : " + getQMemoria(); 
+    }
+    
 }

@@ -2,28 +2,33 @@ import java.math.BigDecimal;
 
 public class Cuffie extends Prodotto {
     private String colore;
-    private boolean wireless;
+    private boolean isWireless;
 
-    public Cuffie(String colore, boolean wireless, int codice, String nome, String marca, BigDecimal prezzo, double iva){
+    public Cuffie(String nome, String marca, BigDecimal prezzo, BigDecimal iva, String colore,
+            boolean isWireless) {
+        super( nome, marca, prezzo, iva);
         this.colore = colore;
-        this.wireless = wireless;
-        super(codice, nome, marca, prezzo, iva);
+        this.isWireless = isWireless;
     }
-    
-    public String getColore(){
+
+    public String getColore() {
         return this.colore;
     }
 
-    public void setColore(String colore){
+    public void setColore(String colore) {
         this.colore = colore;
     }
 
-    public boolean getWireless(){
-        return this.wireless;
+    public boolean getIsWireless() {
+        return this.isWireless;
     }
 
-    public void setWireless(boolean wireless){
-        this.wireless = wireless;
+    public void setIsWireless(boolean isWireless) {
+        this.isWireless = isWireless;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nColore : " + getColore() + "\nWireless : " + getIsWireless(); 
     }
 }
-

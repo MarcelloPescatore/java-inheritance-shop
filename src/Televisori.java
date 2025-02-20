@@ -2,28 +2,33 @@ import java.math.BigDecimal;
 
 public class Televisori extends Prodotto {
     private int pollici;
-    private boolean smart;
+    private boolean isSmart;
 
-    public Televisori(int pollici, boolean smart, int codice, String nome, String marca, BigDecimal prezzo, double iva){
+    public Televisori(String nome, String marca, BigDecimal prezzo, BigDecimal iva, int pollici,
+            boolean isSmart) {
+        super(nome, marca, prezzo, iva);
         this.pollici = pollici;
-        this.smart = smart;
-        super(codice, nome, marca, prezzo, iva);
+        this.isSmart = isSmart;
     }
 
-    public int getPollici(){
+    public int getPollici() {
         return this.pollici;
     }
 
-    public void setPollici(int pollici){
+    public void setPollici(int pollici) {
         this.pollici = pollici;
     }
 
-    public boolean getSmart(){
-        return this.smart;
+    public boolean getIsSmart() {
+        return this.isSmart;
     }
 
-    public void setSmart(boolean smart){
-        this.smart = smart;
+    public void setIsSmart(boolean isSmart) {
+        this.isSmart = isSmart;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nDimensione TV : " + getPollici() + " pollici" + "\nSmart : " + getIsSmart(); 
     }
 }
-

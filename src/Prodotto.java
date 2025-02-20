@@ -1,15 +1,18 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Random;
 
 public class Prodotto {
     private int codice;
     private String nome;
     private String marca;
     private BigDecimal prezzo;
-    private double iva;
+    private BigDecimal iva;
 
 
-    public Prodotto(int codice, String nome, String marca, BigDecimal prezzo, double iva) {
-        this.codice = codice;
+    public Prodotto(String nome, String marca, BigDecimal prezzo, BigDecimal iva) {
+        Random random = new Random();
+        this.codice = random.nextInt(99999);
         this.nome = nome;
         this.marca = marca;
         this.prezzo = prezzo;
@@ -46,11 +49,25 @@ public class Prodotto {
         this.prezzo = prezzo;
     }
 
-    public double getIva(){
+    public BigDecimal getIva(){
         return this.iva;
     }
 
-    public void setIva(double iva){
+    public void setIva(BigDecimal iva){
         this.iva = iva;
+    }
+
+    public BigDecimal getPrezzoConIva() {
+        if (prezzo != null && iva != null) {
+            return prezzo.add(prezzo.multiply(iva)).setScale(2, RoundingMode.DOWN);
+        }
+        return null;
+    };
+
+    public String toString() {
+        if (nome != null) {
+            return codice + "-" + nome;
+        }
+        return null;
     }
 }
